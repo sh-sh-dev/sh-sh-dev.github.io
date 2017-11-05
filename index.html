@@ -83,6 +83,8 @@
 <hr>
 <footer class="row">
     <span id="cr">&copy; </span>
+    <div style="height: 15px;"></div>
+    <a id="chl" href="?l=fa">فارسی</a>
 </footer>
 <script type="text/javascript">
 //    var UAgent = new Agent();
@@ -136,6 +138,8 @@
         $("#Telegram").attr('title',English.telegram);
         $("#cr").html($("#cr").html() + English.cr);
         $("#isng").html(English.isng);
+        $("#chl").html("فا");
+        $("#chl").attr("href","?l=fa");
     }
     else if (l == "fa") {
         $("body").attr("dir","rtl");
@@ -150,6 +154,8 @@
         $("#Telegram").attr('title',Persian.telegram);
         $("#cr").html($("#cr").html() + Persian.cr);
         $("isng").html(Persian.isng);
+        $("#chl").html("En");
+        $("#chl").attr("href","?l=en");
     }
 //             , contact/...
 </script>
