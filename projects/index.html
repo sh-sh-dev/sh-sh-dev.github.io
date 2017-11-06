@@ -34,10 +34,8 @@
     <!--Styles-->
     <link rel="stylesheet" type="text/css" href="//cdn.rawgit.com/piorra/PUI/master/src/css/pui.min.css">
     <link rel="stylesheet" type="text/css" href="../style.css">
-    <link rel="stylesheet" type="text/css" media="all" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <!--Scripts-->
     <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
-    <!--<script src="//rawgit.com/Hkh12/agent/master/src/agent.min.js"></script>-->
 </head>
 <body dir="rtl">
 <div class="row text-center">
@@ -47,11 +45,10 @@
                 :( JavaScript is not enabled
             </div>
         </noscript>
-        <!--<div class="infobar error ie" id="isng" style="display: none;position: fixed;right:0;bottom: 0;width: 176px;margin: 10px">-->
-        <!--IE is not a good browser !-->
-        <!--</div>-->
         <h1 id="name">شایگان شکرالهی</h1>
-
+        <a class="tile" href="../index.html">
+            <span id="home">خانه</span>
+        </a>
         <h3 id="projects">پروژه ها</h3>
         <svg version="1" class="pui-md-loader" id="loader" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="75%" height="100%" viewBox="0 0 16 16">
             <g class="loader">
@@ -92,7 +89,8 @@
                 projects:"پروژه ها :",
                 jsne:"جاوا اسکریپت غیر فعال است :(",
                 isng:"اینترنت اکسپلورر یک مرورگر خوب نیست !",
-                cr:"۱۳۹۶ شایگان شکرالهی"
+                cr:"۱۳۹۶ شایگان شکرالهی",
+                home:"خانه"
             },
             English = {
                 title:"Shaygan Shokrollahi",
@@ -100,7 +98,8 @@
                 projects:"Projects : ",
                 jsne:"JavaScript is not enabled :(",
                 isng:"IE is not a good browser !",
-                cr:"2017 Shaygan Shokrollahi"
+                cr:"2017 Shaygan Shokrollahi",
+                home:"Home"
             };
     if (l == "en") {
         $("*").css("font-family","'Roboto Mono'");
@@ -114,6 +113,7 @@
         $("#cr").html($("#cr").html() + English.cr);
         $("#chl").html("فا");
         $("#chl").attr("href","?l=fa");
+        $("#home").html(English.home);
     }
     else if (l == "fa") {
         $("*").css("font-family","IRANSans");
@@ -128,6 +128,7 @@
         $("#cr").html($("#cr").html() + Persian.cr);
         $("#chl").html("En");
         $("#chl").attr("href","?l=en");
+        $("#home").html(Persian.home);
     }
 
     var a = $.getJSON('//api.github.com/users/sh-sh-dev/repos',{},function(data){
