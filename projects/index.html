@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.9,maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Shaygan Shokrollahi , Back-End Developer">
+    <meta name="author" content="Shaygan Shokrollahi">
+    <title>Shaygan Shokrollahi</title>
+    <meta name="keywords" content="Shaygan Shokrollahi,شایگان شکرالهی,Shaygan,شایگان,Shokrollahi,شکرالهی">
+    <meta name="theme-color" content="#f5f6f7">
+    <!-- Icons -->
+    <!--<link rel='shortcut icon' href='/images/favicon.png'>-->
+    <!--<link rel="icon" type="image/png" href="/images/icon.png">-->
+    <!--<link rel="apple-touch-icon-precomposed" href="/images/icon.png">-->
+    <!-- Twitter-->
+    <meta name="twitter:title" content="Shaygan Shokrollahi">
+    <meta name="twitter:description" content="Shaygan Shokrollahi , Back-End Developer">
+    <!--<meta name="twitter:image" content="https://sh-sh-dev.github.io/profile.png">-->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://sh-sh-dev.github.io/">
+    <!--FaceBook-->
+    <meta property="og:site_name" content="Shaygan Shokrollahi">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Shaygan Shokrollahi">
+    <meta property="og:description" content="Shaygan Shokrollahi , Back-End Developer">
+    <!--<meta property="og:image" content="https://sh-sh-dev.github.io/profile.png">-->
+    <!--Google-->
+    <meta itemprop="name" content="Shaygan Shokrollahi">
+    <meta itemprop="description" content="Shaygan Shokrollahi , Back-End Developer">
+    <meta itemprop="image" content="https://sh-sh-dev.github.io/">
+    <!--<meta itemprop="url" content="https://sh-sh-dev.github.io/profile.png">-->
+    <!--Apple-->
+    <meta name="apple-mobile-web-app-title" content="شایگان شکرالهی">
+    <!--Styles-->
+    <link rel="stylesheet" type="text/css" href="//cdn.rawgit.com/piorra/PUI/master/src/css/pui.min.css">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="stylesheet" type="text/css" media="all" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!--Scripts-->
+    <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+    <!--<script src="//rawgit.com/Hkh12/agent/master/src/agent.min.js"></script>-->
+</head>
+<body dir="rtl">
+<div class="row text-center">
+    <section>
+        <noscript>
+            <div class="infobar error no-js" id="jsne" style="position: fixed;left:0;bottom: 0;width: 176px;margin: 10px">
+                :( JavaScript is not enabled
+            </div>
+        </noscript>
+        <!--<div class="infobar error ie" id="isng" style="display: none;position: fixed;right:0;bottom: 0;width: 176px;margin: 10px">-->
+        <!--IE is not a good browser !-->
+        <!--</div>-->
+        <h1 id="name">شایگان شکرالهی</h1>
+
+        <h3 id="projects">پروژه ها</h3>
+        <svg version="1" class="pui-md-loader" id="loader" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="75%" height="100%" viewBox="0 0 16 16">
+            <g class="loader">
+                <path class="path colorful" fill="none" d="M 8,1.125 A 6.875,6.875 0 1 1 1.125,8" stroke-width=".825" stroke-linecap="round"></path>
+            </g>
+        </svg>
+        <div id="projects_d" class="pui-col md-12 hidden">
+            <div id="projects_d-even" class="pui-col md-6">
+            </div>
+            <div id="projects_d-odd" class="pui-col md-6">
+            </div>
+        </div>
+    </section>
+</div>
+<footer class="row">
+    <span id="cr" style="text-align:center!important">&copy; </span>
+    <div style="height: 15px;"></div>
+    <a id="chl" href="?l=fa">فارسی</a>
+</footer>
+<script src="../script.js"></script>
+<script type="text/javascript">
+    var l = null;
+    if (getLang("l") && getLang("l") == "fa" || getLang("l") == "en") {
+        l = getLang("l");
+        setCookie("language",l,365);
+    }
+    else if (getCookie("language") && getCookie("language") == "fa" || getCookie("language") == "en") {
+        l = getCookie("language");
+    }
+    else {
+        l = "en";
+        setCookie("language",l,365);
+    }
+    var
+            Persian = {
+                title:"شایگان شکرالهی",
+                name:"شایگان شکرالهی",
+                projects:"پروژه ها :",
+                jsne:"جاوا اسکریپت غیر فعال است :(",
+                isng:"اینترنت اکسپلورر یک مرورگر خوب نیست !",
+                cr:"۱۳۹۶ شایگان شکرالهی"
+            },
+            English = {
+                title:"Shaygan Shokrollahi",
+                name:"Shaygan Shokrollahi",
+                projects:"Projects : ",
+                jsne:"JavaScript is not enabled :(",
+                isng:"IE is not a good browser !",
+                cr:"2017 Shaygan Shokrollahi"
+            };
+    if (l == "en") {
+        $("*").css("font-family","'Roboto Mono'");
+        $(".chip").css("direction","ltr");
+        $("#chl").css("font-family","IRANSans");
+        $("body").attr("dir","ltr");
+        $(document).attr("title",English.title);
+        $("#name").html(English.name);
+        $("#jsne").html(English.jsne);
+        $("#projects").html(English.projects);
+        $("#cr").html($("#cr").html() + English.cr);
+        $("#chl").html("فا");
+        $("#chl").attr("href","?l=fa");
+    }
+    else if (l == "fa") {
+        $("*").css("font-family","IRANSans");
+        $("*").css("direction","rtl");
+        $(".chip").css("direction","ltr");
+        $("#chl").css("font-family","'Roboto Mono'");
+        $("body").attr("dir","rtl");
+        $(document).attr("title",Persian.title);
+        $("#name").html(Persian.name);
+        $("#jsne").html(Persian.jsne);
+        $("#projects").html(Persian.projects);
+        $("#cr").html($("#cr").html() + Persian.cr);
+        $("#chl").html("En");
+        $("#chl").attr("href","?l=en");
+    }
+
+    var a = $.getJSON('//api.github.com/users/sh-sh-dev/repos',{},function(data){
+        GetProjects();
+        $("#loader").addClass("hidden");
+        $("#projects_d").removeClass("hidden");
+    });
+    function GetProjects() {
+        for (i=0;i<a.responseJSON.length;i++) {
+            var $div = $("<div>", {id: "project-" + i, "class": "chip ltr"});
+            if (i % 2 == 0) {
+                $("#projects_d-even").append($div);
+            }
+            else {
+                $("#projects_d-odd").append($div);
+            }
+            $("#project-" + i).html("<div class='body'><a target='_blank' href='https://github.com/" + a.responseJSON[i].full_name + "'><b>" + a.responseJSON[i].name + "</b></a><br><i>" +  a.responseJSON[i].description + "</i></div>");
+        }
+    }
+</script>
+</body>
+</html>
