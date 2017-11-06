@@ -54,6 +54,7 @@
             <!--IE is not a good browser !-->
         <!--</div>-->
         <h1 id="name">شایگان شکرالهی</h1>
+        <h4 id="aboutSentence">سلام ، من شایگان شکرالهی هستم.</h4>
         <a class="tile" href="about/"><span id="about">درباره</span></a>
         <a class="tile" href="contact/"><span id="contact">ارتباط</span></a>
         <a class="tile" href="projects/"><span id="projects">پروژه ها</span></a>
@@ -101,6 +102,7 @@
                 github:"گیت هاب",
                 instagram:"اینستاگرام",
                 telegram:"تلگرام",
+                aboutSentence:"سلام ، من شایگان شکرالهی هستم",
                 cr:"۱۳۹۶ شایگان شکرالهی"
             },
             English = {
@@ -114,6 +116,7 @@
                 github:"Github",
                 instagram:"Instagram",
                 telegram:"Telegram",
+                aboutSentence:"Hello , I'm Shaygan Shokrollahi",
                 cr:"2017 Shaygan Shokrollahi"
             };
     if (l == "en") {
@@ -131,6 +134,7 @@
         $("#Telegram").attr('title',English.telegram);
         $("#cr").html($("#cr").html() + English.cr);
         $("#isng").html(English.isng);
+        $("#aboutSentence").html(English.aboutSentence);
         $("#chl").html("فا");
         $("#chl").attr("href","?l=fa");
     }
@@ -148,7 +152,8 @@
         $("#Instagram").attr('title',Persian.instagram);
         $("#Telegram").attr('title',Persian.telegram);
         $("#cr").html($("#cr").html() + Persian.cr);
-        $("isng").html(Persian.isng);
+        $("#isng").html(Persian.isng);
+        $("#aboutSentence").html(Persian.aboutSentence);
         $("#chl").html("En");
         $("#chl").attr("href","?l=en");
     }
