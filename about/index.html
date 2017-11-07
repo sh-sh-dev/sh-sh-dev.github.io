@@ -49,18 +49,10 @@
         <a class="tile" href="../index.html">
             <span id="home">خانه</span>
         </a>
-        <h3 id="contact">تماس با من</h3>
-        <form action="https://piorra.ir/sh_sh_dev/github/message.php" method="post">
-            <input type="text" id="IName" placeholder="Name" name="name">
-            <br>
-            <input type="text" id="ISubject" placeholder="Subject" name="subject">
-            <br>
-            <input type="email" id="IEmail" placeholder="Email" name="email">
-            <br>
-            <input type="hidden" value="" id="language" name="language">
-            <textarea placeholder="Message" id="IMessage" rows="8" name="message"></textarea>
-            <button id="ISend">Send</button>
-        </form>
+        <h3 id="about">درباره من</h3>
+        <div class="chip" id="aboutText">
+
+        </div>
     </section>
 </div>
 <footer class="row">
@@ -86,32 +78,22 @@
             Persian = {
                 title:"شایگان شکرالهی",
                 name:"شایگان شکرالهی",
-                contact:"تماس با من",
+                about:"درباره من",
                 jsne:"جاوا اسکریپت غیر فعال است :(",
                 isng:"اینترنت اکسپلورر یک مرورگر خوب نیست !",
                 cr:"۱۳۹۶ شایگان شکرالهی",
                 home:"خانه",
-                imessage:"پیام",
-                iemail:"ایمیل",
-                iname:"نام",
-                isubject:"موضوع",
-                isend:"ارسال",
-                NullError:"مشکلی پیش آمد"
+                aboutText:"لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد."
             },
             English = {
                 title:"Shaygan Shokrollahi",
                 name:"Shaygan Shokrollahi",
-                contact:"Contact Me",
+                about:"About Me",
                 jsne:"JavaScript is not enabled :(",
                 isng:"IE is not a good browser !",
                 cr:"2017 Shaygan Shokrollahi",
                 home:"Home",
-                imessage:"Message",
-                iemail:"Email",
-                iname:"Name",
-                isubject:"Subject",
-                isend:"Send",
-                NullError:"Something Wrong"
+                aboutText:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi."
             };
     if (l == "en") {
         $("*").css("font-family","'Roboto Mono'");
@@ -125,13 +107,8 @@
         $("#chl").html("فا");
         $("#chl").attr("href","?l=fa");
         $("#home").html(English.home);
-        $("#IName").attr('placeholder',English.iname);
-        $("#ISubject").attr('placeholder',English.isubject);
-        $("#IEmail").attr('placeholder',English.iemail);
-        $("#IMessage").attr('placeholder',English.imessage);
-        $("#ISend").html(English.isend);
-        var NotFull = "Please fill all inputs.";
-        var SW = "Message Send Failure.";
+        $("#about").html(English.about);
+        $("#aboutText").html(English.aboutText);
     }
     else if (l == "fa") {
         $("*").css("font-family","IRANSans");
@@ -146,13 +123,8 @@
         $("#chl").html("En");
         $("#chl").attr("href","?l=en");
         $("#home").html(Persian.home);
-        $("#IName").attr('placeholder',Persian.iname);
-        $("#ISubject").attr('placeholder',Persian.isubject);
-        $("#IEmail").attr('placeholder',Persian.iemail);
-        $("#IMessage").attr('placeholder',Persian.imessage);
-        $("#ISend").html(Persian.isend);
-        var NotFull = "لطفا همه فیلد ها را پر کنید.";
-        var SW = "ارسال پیام مقدور نبود.";
+        $("#about").html(Persian.about);
+        $("#aboutText").html(Persian.aboutText);
     }
     $("#language").val(l);
     if (getLang("error")) {
