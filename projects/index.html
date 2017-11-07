@@ -82,6 +82,22 @@
         l = "en";
         setCookie("language",l,365);
     }
+    var IP = $.getJSON('//piorra.ir/sh_sh_dev/github/ip.php',{},function(data){
+        setLanguageByIP();
+        console.log(data);
+    });
+    function setLanguageByIP() {
+        if (IP.responseJSON.Country == "ir") {
+            if (l !== "fa") {
+                var CHL = confirm("کشور شما ایران شناسایی شد ، آیا مایل هستید زبان را به فارسی تغییر دهید؟");
+                if (CHL) {
+                    setCookie("language","fa",365);
+                    l = "fa";
+                    location.reload();
+                }
+            }
+        }
+    }
     var
             Persian = {
                 title:"شایگان شکرالهی",
@@ -131,13 +147,13 @@
         $("#home").html(Persian.home);
     }
 
-    var a = $.getJSON('//api.github.com/users/sh-sh-dev/repos',{},function(data){
+    var Projects = $.getJSON('//api.github.com/users/sh-sh-dev/repos',{},function(data){
         GetProjects();
         $("#loader").addClass("hidden");
         $("#projects_d").removeClass("hidden");
     });
     function GetProjects() {
-        for (i=0;i<a.responseJSON.length;i++) {
+        for (i=0;i<Projects.responseJSON.length;i++) {
             var $div = $("<div>", {id: "project-" + i, "class": "chip ltr"});
             if (i % 2 == 0) {
                 $("#projects_d-even").append($div);
@@ -145,7 +161,7 @@
             else {
                 $("#projects_d-odd").append($div);
             }
-            $("#project-" + i).html("<div class='body'><a target='_blank' href='https://github.com/" + a.responseJSON[i].full_name + "'><b>" + a.responseJSON[i].name + "</b></a><br><i>" +  a.responseJSON[i].description + "</i></div>");
+            $("#project-" + i).html("<div class='body'><a target='_blank' href='https://github.com/" + Projects.responseJSON[i].full_name + "'><b>" + Projects.responseJSON[i].name + "</b></a><br><i>" +  Projects.responseJSON[i].description + "</i></div>");
         }
     }
 </script>

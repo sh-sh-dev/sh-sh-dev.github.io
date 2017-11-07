@@ -51,14 +51,14 @@
         </a>
         <h3 id="contact">تماس با من</h3>
         <form action="https://piorra.ir/sh_sh_dev/github/message.php" method="post">
-            <input type="text" id="IName" placeholder="Name" name="name">
+            <input type="text" id="IName" placeholder="Name" name="name" required>
             <br>
-            <input type="text" id="ISubject" placeholder="Subject" name="subject">
+            <input type="text" id="ISubject" placeholder="Subject" name="subject" required>
             <br>
-            <input type="email" id="IEmail" placeholder="Email" name="email">
+            <input type="email" id="IEmail" placeholder="Email" name="email" required>
             <br>
-            <input type="hidden" value="" id="language" name="language">
-            <textarea placeholder="Message" id="IMessage" rows="8" name="message"></textarea>
+            <input type="hidden" value="" id="language" name="language" required>
+            <textarea placeholder="Message" id="IMessage" rows="8" name="message" required></textarea>
             <button id="ISend">Send</button>
         </form>
     </section>
@@ -81,6 +81,22 @@
     else {
         l = "en";
         setCookie("language",l,365);
+    }
+    var IP = $.getJSON('//piorra.ir/sh_sh_dev/github/ip.php',{},function(data){
+        setLanguageByIP();
+        console.log(data);
+    });
+    function setLanguageByIP() {
+        if (IP.responseJSON.Country == "ir") {
+            if (l !== "fa") {
+                var CHL = confirm("کشور شما ایران شناسایی شد ، آیا مایل هستید زبان را به فارسی تغییر دهید؟");
+                if (CHL) {
+                    setCookie("language","fa",365);
+                    l = "fa";
+                    location.reload();
+                }
+            }
+        }
     }
     var
             Persian = {

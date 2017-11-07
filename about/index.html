@@ -1,1 +1,167 @@
-Coming Soon
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.9,maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Shaygan Shokrollahi , Back-End Developer">
+    <meta name="author" content="Shaygan Shokrollahi">
+    <title>Shaygan Shokrollahi</title>
+    <meta name="keywords" content="Shaygan Shokrollahi,شایگان شکرالهی,Shaygan,شایگان,Shokrollahi,شکرالهی">
+    <meta name="theme-color" content="#f5f6f7">
+    <!-- Icons -->
+    <!--<link rel='shortcut icon' href='/images/favicon.png'>-->
+    <!--<link rel="icon" type="image/png" href="/images/icon.png">-->
+    <!--<link rel="apple-touch-icon-precomposed" href="/images/icon.png">-->
+    <!-- Twitter-->
+    <meta name="twitter:title" content="Shaygan Shokrollahi">
+    <meta name="twitter:description" content="Shaygan Shokrollahi , Back-End Developer">
+    <!--<meta name="twitter:image" content="https://sh-sh-dev.github.io/profile.png">-->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://sh-sh-dev.github.io/">
+    <!--FaceBook-->
+    <meta property="og:site_name" content="Shaygan Shokrollahi">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Shaygan Shokrollahi">
+    <meta property="og:description" content="Shaygan Shokrollahi , Back-End Developer">
+    <!--<meta property="og:image" content="https://sh-sh-dev.github.io/profile.png">-->
+    <!--Google-->
+    <meta itemprop="name" content="Shaygan Shokrollahi">
+    <meta itemprop="description" content="Shaygan Shokrollahi , Back-End Developer">
+    <meta itemprop="image" content="https://sh-sh-dev.github.io/">
+    <!--<meta itemprop="url" content="https://sh-sh-dev.github.io/profile.png">-->
+    <!--Apple-->
+    <meta name="apple-mobile-web-app-title" content="شایگان شکرالهی">
+    <!--Styles-->
+    <link rel="stylesheet" type="text/css" href="//cdn.rawgit.com/piorra/PUI/master/src/css/pui.min.css">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <!--Scripts-->
+    <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<body dir="rtl">
+<div class="row text-center">
+    <section>
+        <noscript>
+            <div class="infobar error no-js" id="jsne" style="position: fixed;left:0;bottom: 0;width: 176px;margin: 10px">
+                :( JavaScript is not enabled
+            </div>
+        </noscript>
+        <h1 id="name">شایگان شکرالهی</h1>
+        <a class="tile" href="../index.html">
+            <span id="home">خانه</span>
+        </a>
+        <h3 id="contact">تماس با من</h3>
+        <form action="https://piorra.ir/sh_sh_dev/github/message.php" method="post">
+            <input type="text" id="IName" placeholder="Name" name="name">
+            <br>
+            <input type="text" id="ISubject" placeholder="Subject" name="subject">
+            <br>
+            <input type="email" id="IEmail" placeholder="Email" name="email">
+            <br>
+            <input type="hidden" value="" id="language" name="language">
+            <textarea placeholder="Message" id="IMessage" rows="8" name="message"></textarea>
+            <button id="ISend">Send</button>
+        </form>
+    </section>
+</div>
+<footer class="row">
+    <span id="cr" style="text-align:center!important">&copy; </span>
+    <div style="height: 15px;"></div>
+    <a id="chl" href="?l=fa">فارسی</a>
+</footer>
+<script src="../script.js"></script>
+<script type="text/javascript">
+    var l = null;
+    if (getLang("l") && getLang("l") == "fa" || getLang("l") == "en") {
+        l = getLang("l");
+        setCookie("language",l,365);
+    }
+    else if (getCookie("language") && getCookie("language") == "fa" || getCookie("language") == "en") {
+        l = getCookie("language");
+    }
+    else {
+        l = "en";
+        setCookie("language",l,365);
+    }
+    var
+            Persian = {
+                title:"شایگان شکرالهی",
+                name:"شایگان شکرالهی",
+                contact:"تماس با من",
+                jsne:"جاوا اسکریپت غیر فعال است :(",
+                isng:"اینترنت اکسپلورر یک مرورگر خوب نیست !",
+                cr:"۱۳۹۶ شایگان شکرالهی",
+                home:"خانه",
+                imessage:"پیام",
+                iemail:"ایمیل",
+                iname:"نام",
+                isubject:"موضوع",
+                isend:"ارسال",
+                NullError:"مشکلی پیش آمد"
+            },
+            English = {
+                title:"Shaygan Shokrollahi",
+                name:"Shaygan Shokrollahi",
+                contact:"Contact Me",
+                jsne:"JavaScript is not enabled :(",
+                isng:"IE is not a good browser !",
+                cr:"2017 Shaygan Shokrollahi",
+                home:"Home",
+                imessage:"Message",
+                iemail:"Email",
+                iname:"Name",
+                isubject:"Subject",
+                isend:"Send",
+                NullError:"Something Wrong"
+            };
+    if (l == "en") {
+        $("*").css("font-family","'Roboto Mono'");
+        $("#chl").css("font-family","IRANSans");
+        $("body").attr("dir","ltr");
+        $(document).attr("title",English.title);
+        $("#name").html(English.name);
+        $("#jsne").html(English.jsne);
+        $("#contact").html(English.contact);
+        $("#cr").html($("#cr").html() + English.cr);
+        $("#chl").html("فا");
+        $("#chl").attr("href","?l=fa");
+        $("#home").html(English.home);
+        $("#IName").attr('placeholder',English.iname);
+        $("#ISubject").attr('placeholder',English.isubject);
+        $("#IEmail").attr('placeholder',English.iemail);
+        $("#IMessage").attr('placeholder',English.imessage);
+        $("#ISend").html(English.isend);
+        var NotFull = "Please fill all inputs.";
+        var SW = "Message Send Failure.";
+    }
+    else if (l == "fa") {
+        $("*").css("font-family","IRANSans");
+        $("*").css("direction","rtl");
+        $("#chl").css("font-family","'Roboto Mono'");
+        $("body").attr("dir","rtl");
+        $(document).attr("title",Persian.title);
+        $("#name").html(Persian.name);
+        $("#jsne").html(Persian.jsne);
+        $("#contact").html(Persian.contact);
+        $("#cr").html($("#cr").html() + Persian.cr);
+        $("#chl").html("En");
+        $("#chl").attr("href","?l=en");
+        $("#home").html(Persian.home);
+        $("#IName").attr('placeholder',Persian.iname);
+        $("#ISubject").attr('placeholder',Persian.isubject);
+        $("#IEmail").attr('placeholder',Persian.iemail);
+        $("#IMessage").attr('placeholder',Persian.imessage);
+        $("#ISend").html(Persian.isend);
+        var NotFull = "لطفا همه فیلد ها را پر کنید.";
+        var SW = "ارسال پیام مقدور نبود.";
+    }
+    $("#language").val(l);
+    if (getLang("error")) {
+        if (getLang("error") == "") {
+            if (l == "fa") alert(Persian.NullError);
+            else alert(English.NullError);
+        }
+        else alert(getLang("error"))
+    }
+</script>
+</body>
+</html>
