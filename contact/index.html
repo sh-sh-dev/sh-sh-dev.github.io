@@ -9,13 +9,13 @@
     <meta name="keywords" content="Shaygan Shokrollahi,شایگان شکرالهی,Shaygan,شایگان,Shokrollahi,شکرالهی">
     <meta name="theme-color" content="#f5f6f7">
     <!-- Icons -->
-    <!--<link rel='shortcut icon' href='/images/favicon.png'>-->
-    <!--<link rel="icon" type="image/png" href="/images/icon.png">-->
-    <!--<link rel="apple-touch-icon-precomposed" href="/images/icon.png">-->
+    <link rel='shortcut icon' href='../profile.png'>
+    <link rel="icon" type="image/png" href="../profile.png">
+    <link rel="apple-touch-icon-precomposed" href="../profile.png">
     <!-- Twitter-->
     <meta name="twitter:title" content="Shaygan Shokrollahi">
     <meta name="twitter:description" content="Shaygan Shokrollahi , Back-End Developer">
-    <!--<meta name="twitter:image" content="https://sh-sh-dev.github.io/profile.png">-->
+    <meta name="twitter:image" content="https://sh-sh-dev.github.io/profile.png">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:url" content="https://sh-sh-dev.github.io/">
     <!--FaceBook-->
@@ -23,12 +23,12 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Shaygan Shokrollahi">
     <meta property="og:description" content="Shaygan Shokrollahi , Back-End Developer">
-    <!--<meta property="og:image" content="https://sh-sh-dev.github.io/profile.png">-->
+    <meta property="og:image" content="https://sh-sh-dev.github.io/profile.png">
     <!--Google-->
     <meta itemprop="name" content="Shaygan Shokrollahi">
     <meta itemprop="description" content="Shaygan Shokrollahi , Back-End Developer">
     <meta itemprop="image" content="https://sh-sh-dev.github.io/">
-    <!--<meta itemprop="url" content="https://sh-sh-dev.github.io/profile.png">-->
+    <meta itemprop="url" content="https://sh-sh-dev.github.io/profile.png">
     <!--Apple-->
     <meta name="apple-mobile-web-app-title" content="شایگان شکرالهی">
     <!--Styles-->
@@ -40,11 +40,11 @@
 <body dir="rtl">
 <div class="row text-center">
     <section>
-        <noscript>
-            <div class="infobar error no-js" id="jsne" style="position: fixed;left:0;bottom: 0;width: 176px;margin: 10px">
-                :( JavaScript is not enabled
-            </div>
-        </noscript>
+        <!--<noscript>-->
+            <!--<div class="infobar error no-js" id="jsne" style="position: fixed;left:0;bottom: 0;width: 176px;margin: 10px">-->
+                <!--:( JavaScript is not enabled-->
+            <!--</div>-->
+        <!--</noscript>-->
         <h1 id="name">شایگان شکرالهی</h1>
         <a class="tile" href="../index.html">
             <span id="home">خانه</span>
@@ -92,7 +92,7 @@
                 var CHL = confirm("کشور شما ایران شناسایی شد ، آیا مایل هستید زبان را به فارسی تغییر دهید؟");
                 if (CHL) {
                     setCookie("language","fa",365);
-//                    setCookie("chlbyip","true",365);
+                    setCookie("chlbyip","false",365);
                     l = "fa";
                     location.reload();
                 }
@@ -137,7 +137,7 @@
         $("*").css("font-family","'Roboto Mono'");
         $("#chl").css("font-family","IRANSans");
         $("body").attr("dir","ltr");
-        $(document).attr("title",English.title);
+        $(document).attr("title",English.title + " Contact Me");
         $("#name").html(English.name);
         $("#jsne").html(English.jsne);
         $("#contact").html(English.contact);
@@ -158,7 +158,7 @@
         $("*").css("direction","rtl");
         $("#chl").css("font-family","'Roboto Mono'");
         $("body").attr("dir","rtl");
-        $(document).attr("title",Persian.title);
+        $(document).attr("title",Persian.title + " تماس با من");
         $("#name").html(Persian.name);
         $("#jsne").html(Persian.jsne);
         $("#contact").html(Persian.contact);
