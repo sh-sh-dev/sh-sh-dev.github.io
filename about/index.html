@@ -74,6 +74,26 @@
         l = "en";
         setCookie("language",l,365);
     }
+    var IP = $.getJSON('//piorra.ir/sh_sh_dev/github/ip.php',{},function(data){
+        setLanguageByIP();
+//        console.log(data);
+    });
+    function setLanguageByIP() {
+        if (IP.responseJSON.Country == "IR") {
+            if (l !== "fa" && getCookie("chlbyip") != "false") {
+                var CHL = confirm("کشور شما ایران شناسایی شد ، آیا مایل هستید زبان را به فارسی تغییر دهید؟");
+                if (CHL) {
+                    setCookie("language","fa",365);
+//                    setCookie("chlbyip","true",365);
+                    l = "fa";
+                    location.reload();
+                }
+                else {
+                    setCookie("chlbyip","false",365);
+                }
+            }
+        }
+    }
     var
             Persian = {
                 title:"شایگان شکرالهی",
