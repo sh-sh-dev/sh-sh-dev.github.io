@@ -173,7 +173,14 @@
             else {
                 $("#projects_d-odd").append($div);
             }
-            $("#project-" + i).html("<div class='body'><a target='_blank' href='https://github.com/" + Projects.responseJSON[i].full_name + "'><b>" + Projects.responseJSON[i].name + "</b></a><br><i>" +  Projects.responseJSON[i].description + "</i></div>");
+            $("#project-" + i).html("<div class='body'><a target='_blank' href='https://github.com/" + Projects.responseJSON[i].full_name + "'><b>" + Projects.responseJSON[i].name + "</b></a><br><i>" +  Projects.responseJSON[i].description + "</i><br>");
+            if (Projects.responseJSON[i].language != null) {
+                $("#project-" + i).append("<img class='"+Projects.responseJSON[i].language+"' src='../" + Projects.responseJSON[i].language +".png'>");
+            }
+            if (Projects.responseJSON[i].stargazers_count != 0) {
+                $("#project-" + i).append("&#9733;" + Projects.responseJSON[i].stargazers_count);
+            }
+            $("#project-" + i).append("</div>");
         }
     }
 </script>
