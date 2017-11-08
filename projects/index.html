@@ -48,13 +48,15 @@
 <div class="row text-center">
     <section>
         <!--<noscript>-->
-            <!--<div class="infobar error no-js" id="jsne" style="position: fixed;left:0;bottom: 0;width: 176px;margin: 10px">-->
-                <!--:( JavaScript is not enabled-->
-            <!--</div>-->
+        <!--<div class="infobar error no-js" id="jsne" style="position: fixed;left:0;bottom: 0;width: 176px;margin: 10px">-->
+        <!--:( JavaScript is not enabled-->
+        <!--</div>-->
         <!--</noscript>-->
         <h1 id="name">شایگان شکرالهی</h1>
-        <a class="tile" href="../index.html">
-            <span id="home">خانه</span>
+        <h4 class="aboutPage" id="aboutSentence">تمام پروژه های من در این صفحه هستند.</h4>
+        <a class="back has-ripple"  href="../index.html">
+            <!--<span id="home">خانه</span>-->
+            <i class="material-icons">arrow_back</i>
         </a>
         <h3 id="projects">پروژه ها</h3>
         <svg version="1" class="pui-md-loader" id="loader" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="75%" height="100%" viewBox="0 0 16 16">
@@ -116,7 +118,8 @@
                 jsne:"جاوا اسکریپت غیر فعال است :(",
                 isng:"اینترنت اکسپلورر یک مرورگر خوب نیست !",
                 cr:"۱۳۹۶ شایگان شکرالهی",
-                home:"خانه"
+                home:"خانه",
+                aboutSentence:"تمام پروژه های من در این صفحه هستند."
             },
             English = {
                 title:"Shaygan Shokrollahi",
@@ -125,7 +128,8 @@
                 jsne:"JavaScript is not enabled :(",
                 isng:"IE is not a good browser !",
                 cr:"2017 Shaygan Shokrollahi",
-                home:"Home"
+                home:"Home",
+                aboutSentence:"All my projects are on this page."
             };
     if (l == "en") {
         $("*").css("font-family","'Roboto Mono'");
@@ -139,6 +143,7 @@
         $("#chl").html("فا");
         $("#chl").attr("href","?l=fa");
         $("#home").html(English.home);
+        $("#aboutSentence").html(English.aboutSentence);
     }
     else if (l == "fa") {
         $("*").css("font-family","IRANSans");
@@ -154,6 +159,7 @@
         $("#chl").html("En");
         $("#chl").attr("href","?l=en");
         $("#home").html(Persian.home);
+        $("#aboutSentence").html(Persian.aboutSentence);
     }
 
     var Projects = $.getJSON('//api.github.com/users/sh-sh-dev/repos',{},function(data){
@@ -163,19 +169,25 @@
     });
     function GetProjects() {
         for (i=0;i<Projects.responseJSON.length;i++) {
-            var $div = $("<div>", {id: "project-" + i, "class": "chip ltr projectd"});
+            var $div = $("<div>", {id: "project-" + i, "class": "chip cf ltr projectd"});
             if (i % 2 == 0) {
                 $("#projects_d-even").append($div);
             }
             else {
                 $("#projects_d-odd").append($div);
             }
-            $("#project-" + i).html("<div class='body'><a target='_blank' href='https://github.com/" + Projects.responseJSON[i].full_name + "'><b>" + Projects.responseJSON[i].name + "</b></a><br><i>" +  Projects.responseJSON[i].description + "</i><br>");
+            $("#project-" + i).html("<div class='body'><a target='_blank' href='https://github.com/" + Projects.responseJSON[i].full_name + "'><b>" + Projects.responseJSON[i].name + "</b></a><br><i>" +  Projects.responseJSON[i].description + "</i>");
             if (Projects.responseJSON[i].language != null) {
-//                $("#project-" + i).append("<img class='language "+Projects.responseJSON[i].language+"' src='../" + Projects.responseJSON[i].language +".png'>");
+                $("#project-" + i).append("<div class='language' data-lang='" + Projects.responseJSON[i].language + "'></div>");
+            }
+            else {
+                $("#project-" + i).append("&nbsp;");
             }
             if (Projects.responseJSON[i].stargazers_count != 0) {
-//                $("#project-" + i).append("<span class='starts'>&#9733;" + Projects.responseJSON[i].stargazers_count + "</span>");
+                $("#project-" + i).append("<span class='stars'>&#9733;" + Projects.responseJSON[i].stargazers_count + "</span>");
+            }
+            else {
+                $("#project-" + i).append("&nbsp;");
             }
             $("#project-" + i).append("</div>");
         }
