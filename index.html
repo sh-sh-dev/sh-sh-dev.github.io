@@ -128,7 +128,7 @@
                 github:"گیت هاب",
                 instagram:"اینستاگرام",
                 telegram:"تلگرام",
-                aboutSentence:"سلام ، من یک برنامه نویس سمت سرور هستم",
+                aboutSentence:"سلام ، من یک برنامه نویس بک اند هستم",
                 cr:"۱۳۹۶ شایگان شکرالهی"
             },
             English = {
@@ -142,47 +142,38 @@
                 github:"Github",
                 instagram:"Instagram",
                 telegram:"Telegram",
-                aboutSentence:"Hello , I'm a Server Side Programmer",
+                aboutSentence:"Hello , I'm a Back-End Programmer",
                 cr:"2017 Shaygan Shokrollahi"
             };
+    var ThisLanguage , ThisClass , ThisHref , ThisCHL;
     if (l == "en") {
-        $("*").css("font-family","'Roboto Mono'");
-        $("#chl").css("font-family","IRANSans");
-        $("body").attr("dir","ltr");
-        $(document).attr("title",English.title);
-        $("#name").html(English.name);
-        $("#contact").html(English.contact);
-        $("#about").html(English.about);
-        $("#projects").html(English.projects);
-        $("#jsne").html(English.jsne);
-        $("#Github").attr('title',English.github);
-        $("#Instagram").attr('title',English.instagram);
-        $("#Telegram").attr('title',English.telegram);
-        $("#cr").html($("#cr").html() + English.cr);
-        $("#isng").html(English.isng);
-        $("#aboutSentence").html(English.aboutSentence);
-        $("#chl").html("فا");
-        $("#chl").attr("href","?l=fa");
+        ThisLanguage = English;
+        ThisClass = "en";
+        ThisHref = "?l=fa";
+        ThisCHL = "فا";
     }
-    else if (l == "fa") {
-        $("*").css("font-family","IRANSans");
-        $("#chl").css("font-family","'Roboto Mono'");
-        $("body").attr("dir","rtl");
-        $(document).attr("title",Persian.title);
-        $("#name").html(Persian.name);
-        $("#contact").html(Persian.contact);
-        $("#about").html(Persian.about);
-        $("#projects").html(Persian.projects);
-        $("#jsne").html(Persian.jsne);
-        $("#Github").attr('title',Persian.github);
-        $("#Instagram").attr('title',Persian.instagram);
-        $("#Telegram").attr('title',Persian.telegram);
-        $("#cr").html($("#cr").html() + Persian.cr);
-        $("#isng").html(Persian.isng);
-        $("#aboutSentence").html(Persian.aboutSentence);
-        $("#chl").html("En");
-        $("#chl").attr("href","?l=en");
+    else {
+        ThisLanguage = Persian;
+        ThisClass = "fa";
+        ThisHref = "?l=en";
+        ThisCHL = "EN";
     }
+    $("body").addClass(ThisClass);
+    $(document).attr("title",ThisLanguage.title);
+    $("#name").html(ThisLanguage.name);
+    $("#contact").html(ThisLanguage.contact);
+    $("#about").html(ThisLanguage.about);
+    $("#projects").html(ThisLanguage.projects);
+    $("#jsne").html(ThisLanguage.jsne);
+    $("#Github").attr('title',ThisLanguage.github);
+    $("#Instagram").attr('title',ThisLanguage.instagram);
+    $("#Telegram").attr('title',ThisLanguage.telegram);
+    $("#cr").append(ThisLanguage.cr);
+    $("#isng").html(ThisLanguage.isng);
+    $("#aboutSentence").html(ThisLanguage.aboutSentence);
+    $("#chl").html(ThisCHL);
+    $("#chl").attr("href",ThisHref);
 </script>
+<script src="//cdn.rawgit.com/piorra/PUI/master/src/js/pui.min.js"></script>
 </body>
 </html>

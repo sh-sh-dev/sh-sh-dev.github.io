@@ -113,6 +113,7 @@
     var
             Persian = {
                 title:"شایگان شکرالهی",
+                title2:"تماس با من",
                 name:"شایگان شکرالهی",
                 contact:"تماس با من",
                 jsne:"جاوا اسکریپت غیر فعال است :(",
@@ -129,6 +130,7 @@
             },
             English = {
                 title:"Shaygan Shokrollahi",
+                title2:"Contact Me",
                 name:"Shaygan Shokrollahi",
                 contact:"Contact Me",
                 jsne:"JavaScript is not enabled :(",
@@ -143,57 +145,41 @@
                 NullError:"Something Wrong",
                 aboutSentence:"You can give me a message on this page."
             };
+    var ThisLanguage , ThisClass , ThisHref , ThisCHL;
     if (l == "en") {
-        $("*").css("font-family","'Roboto Mono'");
-        $("#chl").css("font-family","IRANSans");
-        $("body").attr("dir","ltr");
-        $(document).attr("title",English.title + " | "  + " Contact Me");
-        $("#name").html(English.name);
-        $("#jsne").html(English.jsne);
-        $("#contact").html(English.contact);
-        $("#cr").html($("#cr").html() + English.cr);
-        $("#chl").html("فا");
-        $("#chl").attr("href","?l=fa");
-        $("#home").html(English.home);
-        $("#IName").attr('placeholder',English.iname);
-        $("#ISubject").attr('placeholder',English.isubject);
-        $("#IEmail").attr('placeholder',English.iemail);
-        $("#IMessage").attr('placeholder',English.imessage);
-        $("#ISend").html(English.isend);
-        $("#aboutSentence").html(English.aboutSentence);
-        var NotFull = "Please fill all inputs.";
-        var SW = "Message Send Failure.";
+        ThisLanguage = English;
+        ThisClass = "en";
+        ThisHref = "?l=fa";
+        ThisCHL = "فا";
     }
-    else if (l == "fa") {
-        $("*").css("font-family","IRANSans");
-        $("*").css("direction","rtl");
-        $("#chl").css("font-family","'Roboto Mono'");
-        $("body").attr("dir","rtl");
-        $(document).attr("title",Persian.title + " | "  + " تماس با من");
-        $("#name").html(Persian.name);
-        $("#jsne").html(Persian.jsne);
-        $("#contact").html(Persian.contact);
-        $("#cr").html($("#cr").html() + Persian.cr);
-        $("#chl").html("En");
-        $("#chl").attr("href","?l=en");
-        $("#home").html(Persian.home);
-        $("#IName").attr('placeholder',Persian.iname);
-        $("#ISubject").attr('placeholder',Persian.isubject);
-        $("#IEmail").attr('placeholder',Persian.iemail);
-        $("#IMessage").attr('placeholder',Persian.imessage);
-        $("#ISend").html(Persian.isend);
-        $("#aboutSentence").html(Persian.aboutSentence);
-        var NotFull = "لطفا همه فیلد ها را پر کنید.";
-        var SW = "ارسال پیام مقدور نبود.";
+    else {
+        ThisLanguage = Persian;
+        ThisClass = "fa";
+        ThisHref = "?l=en";
+        ThisCHL = "EN";
     }
+    $("body").addClass(ThisClass);
+    $(document).attr("title",ThisLanguage.title + " | "  +  ThisLanguage.title2);
+    $("#name").html(ThisLanguage.name);
+    $("#jsne").html(ThisLanguage.jsne);
+    $("#contact").html(ThisLanguage.contact);
+    $("#cr").append(ThisLanguage.cr);
+    $("#chl").html(ThisCHL);
+    $("#chl").attr("href",ThisHref);
+    $("#home").html(ThisLanguage.home);
+    $("#IName").attr('placeholder',ThisLanguage.iname);
+    $("#ISubject").attr('placeholder',ThisLanguage.isubject);
+    $("#IEmail").attr('placeholder',ThisLanguage.iemail);
+    $("#IMessage").attr('placeholder',ThisLanguage.imessage);
+    $("#ISend").html(ThisLanguage.isend);
+    $("#aboutSentence").html(ThisLanguage.aboutSentence);
     $("#language").val(l);
+
     if (getLang("message")) {
-        if (getLang("message") == "") {
-            if (l == "fa") alert(Persian.NullError);
-            else alert(English.NullError);
-        }
+        if (getLang("message") == "") alert(ThisLanguage.NullError)
         else alert(getLang("message"))
     }
 </script>
+<script src="//cdn.rawgit.com/piorra/PUI/master/src/js/pui.min.js"></script>
 </body>
 </html>

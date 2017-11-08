@@ -44,7 +44,7 @@
     <!--Scripts-->
     <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
-<body dir="rtl">
+<body>
 <div class="row text-center">
     <section>
         <!--<noscript>-->
@@ -113,6 +113,7 @@
     var
             Persian = {
                 title:"شایگان شکرالهی",
+                title2:"پروژه ها",
                 name:"شایگان شکرالهی",
                 projects:"پروژه ها :",
                 jsne:"جاوا اسکریپت غیر فعال است :(",
@@ -123,6 +124,7 @@
             },
             English = {
                 title:"Shaygan Shokrollahi",
+                title2:"Projects",
                 name:"Shaygan Shokrollahi",
                 projects:"Projects : ",
                 jsne:"JavaScript is not enabled :(",
@@ -131,36 +133,29 @@
                 home:"Home",
                 aboutSentence:"All my projects are on this page."
             };
+    var ThisLanguage , ThisClass , ThisHref , ThisCHL;
     if (l == "en") {
-        $("*").css("font-family","'Roboto Mono'");
-        $("#chl").css("font-family","IRANSans");
-        $("body").attr("dir","ltr");
-        $(document).attr("title",English.title + " | "  + " Projects");
-        $("#name").html(English.name);
-        $("#jsne").html(English.jsne);
-        $("#projects").html(English.projects);
-        $("#cr").html($("#cr").html() + English.cr);
-        $("#chl").html("فا");
-        $("#chl").attr("href","?l=fa");
-        $("#home").html(English.home);
-        $("#aboutSentence").html(English.aboutSentence);
+        ThisLanguage = English;
+        ThisClass = "en";
+        ThisHref = "?l=fa";
+        ThisCHL = "فا";
     }
-    else if (l == "fa") {
-        $("*").css("font-family","IRANSans");
-        $("*").css("direction","rtl");
-        $(".chip").css("direction","ltr");
-        $("#chl").css("font-family","'Roboto Mono'");
-        $("body").attr("dir","rtl");
-        $(document).attr("title",Persian.title + " | " + " پروژه ها");
-        $("#name").html(Persian.name);
-        $("#jsne").html(Persian.jsne);
-        $("#projects").html(Persian.projects);
-        $("#cr").html($("#cr").html() + Persian.cr);
-        $("#chl").html("En");
-        $("#chl").attr("href","?l=en");
-        $("#home").html(Persian.home);
-        $("#aboutSentence").html(Persian.aboutSentence);
+    else {
+        ThisLanguage = Persian;
+        ThisClass = "fa";
+        ThisHref = "?l=en";
+        ThisCHL = "EN";
     }
+    $("body").addClass(ThisClass);
+    $(document).attr("title",ThisLanguage.title + " | "  +  ThisLanguage.title2);
+    $("#name").html(ThisLanguage.name);
+    $("#jsne").html(ThisLanguage.jsne);
+    $("#projects").html(ThisLanguage.projects);
+    $("#cr").append(ThisLanguage.cr);
+    $("#chl").html(ThisCHL);
+    $("#chl").attr("href",ThisHref);
+    $("#home").html(ThisLanguage.home);
+    $("#aboutSentence").html(ThisLanguage.aboutSentence);
 
     var Projects = $.getJSON('//api.github.com/users/sh-sh-dev/repos',{},function(data){
         GetProjects();
@@ -193,5 +188,6 @@
         }
     }
 </script>
+<script src="//cdn.rawgit.com/piorra/PUI/master/src/js/pui.min.js"></script>
 </body>
 </html>

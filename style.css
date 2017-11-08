@@ -1429,3 +1429,25 @@ a {
     text-overflow: ellipsis;
 }
 
+.en:not(.material-icons) {
+    font-family: 'Roboto Mono'!important;
+    direction: ltr!important;
+}
+
+.fa:not(.material-icons) {
+    font-family: IRANSans!important;
+    direction: rtl!important;
+}
+
+.en #chl{
+    font-family: IRANSans;
+}
+
+.fa #chl{
+    font-family: 'Roboto Mono';
+}
+
+.fa #projects_d {
+    direction: ltr;
+    font-family: 'Roboto Mono';
+}
