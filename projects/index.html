@@ -59,16 +59,12 @@
             <i class="material-icons">arrow_back</i>
         </a>
         <h3 id="projects">پروژه ها</h3>
-        <svg version="1" class="pui-md-loader" id="loader" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="75%" height="100%" viewBox="0 0 16 16">
-            <g class="loader">
-                <path class="path colorful" fill="none" d="M 8,1.125 A 6.875,6.875 0 1 1 1.125,8" stroke-width=".825" stroke-linecap="round"></path>
-            </g>
-        </svg>
+        <div id="loader">
+            <img src="../loader.svg" alt="Loading...">
+        </div>
         <div id="projects_d" class="pui-col md-12 hidden">
-            <div id="projects_d-even" class="pui-col md-6">
-            </div>
-            <div id="projects_d-odd" class="pui-col md-6">
-            </div>
+            <div id="projects_d-even" class="pui-col md-6"></div>
+            <div id="projects_d-odd" class="pui-col md-6"></div>
         </div>
     </section>
 </div>
@@ -78,6 +74,7 @@
     <a id="chl" href="?l=fa">فارسی</a>
 </footer>
 <script src="../script.js"></script>
+<script src="//cdn.rawgit.com/piorra/PUI/master/src/js/pui.min.js"></script>
 <script type="text/javascript">
     var l = null;
     if (getLang("l") && getLang("l") == "fa" || getLang("l") == "en") {
@@ -164,30 +161,26 @@
     });
     function GetProjects() {
         for (i=0;i<Projects.responseJSON.length;i++) {
-            var $div = $("<div>", {id: "project-" + i, "class": "chip cf ltr projectd"});
-            if (i % 2 == 0) {
-                $("#projects_d-even").append($div);
-            }
-            else {
-                $("#projects_d-odd").append($div);
-            }
-            $("#project-" + i).html("<div class='body'><a target='_blank' href='https://github.com/" + Projects.responseJSON[i].full_name + "'><b>" + Projects.responseJSON[i].name + "</b></a><br><i>" +  Projects.responseJSON[i].description + "</i>");
-            if (Projects.responseJSON[i].language != null) {
-                $("#project-" + i).append("<div class='language' data-lang='" + Projects.responseJSON[i].language + "'></div>");
+            var Repo = Projects.responseJSON[i],
+                    $div = $("<div>", {id: "project-" + i, "class": "chip cf projectd"});
+            if (i % 2 == 0) $("#projects_d-even").append($div);
+            else $("#projects_d-odd").append($div);
+            $("#project-" + i).html("<div class='body'><a target='_blank' href='https://github.com/" + Repo.full_name + "'><b>" + Repo.name + "</b></a><br><span class='muted-txt' data-popover='"+Repo.description+"'>" +  Repo.description + "</span>");
+            if (Repo.language != null) {
+                $("#project-" + i).append("<div class='language' data-lang='" + Repo.language + "'></div>");
             }
             else {
                 $("#project-" + i).append("&nbsp;");
             }
-            if (Projects.responseJSON[i].stargazers_count != 0) {
-                $("#project-" + i).append("<span class='stars'>&#9733;" + Projects.responseJSON[i].stargazers_count + "</span>");
+            if (Repo.stargazers_count != 0) {
+                $("#project-" + i).append("<span class='stars'>&#9733;" + Repo.stargazers_count + "</span>");
             }
             else {
-                $("#project-" + i).append("&nbsp;");
+                $("#project-" + i).append("<br><br>");
             }
             $("#project-" + i).append("</div>");
         }
     }
 </script>
-<script src="//cdn.rawgit.com/piorra/PUI/master/src/js/pui.min.js"></script>
 </body>
 </html>

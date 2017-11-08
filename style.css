@@ -1333,8 +1333,18 @@ a {
 }
 
 #loader {
-    width: 70px;
-    height: 70px
+    /*height: calc(100vh - 170px);*/
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
 }
 
 /*body{background: url(tehran.jpg);background-size: cover;background-position: 50% 50%;background-blend-mode: luminosity;background-color: #f1f1f1;background-size: 100%}*/
@@ -1363,7 +1373,7 @@ a {
 }
 
 .stars {
-    float: right
+    float: right;
 }
 
 .language {
@@ -1420,7 +1430,7 @@ a {
     font-family: 'Material Icons' !important;
 }
 
-.projectd i{
+.projectd span{
     display: block;
     max-width: 100%;
     width: 100%;
