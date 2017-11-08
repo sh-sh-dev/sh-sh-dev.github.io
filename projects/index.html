@@ -89,9 +89,8 @@
         l = "en";
         setCookie("language",l,365);
     }
-    var IP = $.getJSON('//piorra.ir/sh_sh_dev/github/ip.php',{},function(data){
+    var IP = $.getJSON('//github.piorra.ir/ghp/sh-sh-dev/ip',{},function(data){
         setLanguageByIP();
-//        console.log(data);
     });
     function setLanguageByIP() {
         if (IP.responseJSON.Country == "IR") {
@@ -99,7 +98,7 @@
                 var CHL = confirm("کشور شما ایران شناسایی شد ، آیا مایل هستید زبان را به فارسی تغییر دهید؟");
                 if (CHL) {
                     setCookie("language","fa",365);
-                    setCookie("chlbyip","false",365);
+                    setCookie("chlbyip","false",7);
                     l = "fa";
                     location.reload();
                 }
@@ -130,10 +129,9 @@
             };
     if (l == "en") {
         $("*").css("font-family","'Roboto Mono'");
-        $(".chip").css("direction","ltr");
         $("#chl").css("font-family","IRANSans");
         $("body").attr("dir","ltr");
-        $(document).attr("title",English.title + " Projects");
+        $(document).attr("title",English.title + " | "  + " Projects");
         $("#name").html(English.name);
         $("#jsne").html(English.jsne);
         $("#projects").html(English.projects);
@@ -143,13 +141,12 @@
         $("#home").html(English.home);
     }
     else if (l == "fa") {
-        $("*").css("font-family","'Roboto Mono'");
-        $("#projects_d").css("font-family","IRANSans");
+        $("*").css("font-family","IRANSans");
         $("*").css("direction","rtl");
         $(".chip").css("direction","ltr");
         $("#chl").css("font-family","'Roboto Mono'");
         $("body").attr("dir","rtl");
-        $(document).attr("title",Persian.title + " پروژه ها");
+        $(document).attr("title",Persian.title + " | " + " پروژه ها");
         $("#name").html(Persian.name);
         $("#jsne").html(Persian.jsne);
         $("#projects").html(Persian.projects);
@@ -166,7 +163,7 @@
     });
     function GetProjects() {
         for (i=0;i<Projects.responseJSON.length;i++) {
-            var $div = $("<div>", {id: "project-" + i, "class": "chip ltr"});
+            var $div = $("<div>", {id: "project-" + i, "class": "chip ltr projectd"});
             if (i % 2 == 0) {
                 $("#projects_d-even").append($div);
             }
@@ -175,10 +172,10 @@
             }
             $("#project-" + i).html("<div class='body'><a target='_blank' href='https://github.com/" + Projects.responseJSON[i].full_name + "'><b>" + Projects.responseJSON[i].name + "</b></a><br><i>" +  Projects.responseJSON[i].description + "</i><br>");
             if (Projects.responseJSON[i].language != null) {
-                $("#project-" + i).append("<img class='"+Projects.responseJSON[i].language+"' src='../" + Projects.responseJSON[i].language +".png'>");
+//                $("#project-" + i).append("<img class='language "+Projects.responseJSON[i].language+"' src='../" + Projects.responseJSON[i].language +".png'>");
             }
             if (Projects.responseJSON[i].stargazers_count != 0) {
-                $("#project-" + i).append("&#9733;" + Projects.responseJSON[i].stargazers_count);
+//                $("#project-" + i).append("<span class='starts'>&#9733;" + Projects.responseJSON[i].stargazers_count + "</span>");
             }
             $("#project-" + i).append("</div>");
         }

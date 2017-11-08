@@ -62,7 +62,7 @@
         <!--</div>-->
         <h1 id="name">شایگان شکرالهی</h1>
         <h4 id="aboutSentence">سلام ، من شایگان شکرالهی هستم.</h4>
-        <a class="tile" href="about/"><span id="about">درباره</span></a>
+        <!--<a class="tile" href="about/"><span id="about">درباره</span></a>-->
         <a class="tile" href="contact/"><span id="contact">ارتباط</span></a>
         <a class="tile" href="projects/"><span id="projects">پروژه ها</span></a>
         <div class="separator"><span style="color: black">&#x2724;</span></div>
@@ -97,9 +97,8 @@
         l = "en";
         setCookie("language",l,365);
     }
-    var IP = $.getJSON('//piorra.ir/sh_sh_dev/github/ip.php',{},function(data){
+    var IP = $.getJSON('//github.piorra.ir/ghp/sh-sh-dev/ip',{},function(data){
         setLanguageByIP();
-//        console.log(data);
     });
     function setLanguageByIP() {
         if (IP.responseJSON.Country == "IR") {
@@ -107,7 +106,7 @@
                 var CHL = confirm("کشور شما ایران شناسایی شد ، آیا مایل هستید زبان را به فارسی تغییر دهید؟");
                 if (CHL) {
                     setCookie("language","fa",365);
-                    setCookie("chlbyip","false",365);
+                    setCookie("chlbyip","false",7);
                     l = "fa";
                     location.reload();
                 }

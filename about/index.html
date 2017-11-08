@@ -81,9 +81,8 @@
         l = "en";
         setCookie("language",l,365);
     }
-    var IP = $.getJSON('//piorra.ir/sh_sh_dev/github/ip.php',{},function(data){
+    var IP = $.getJSON('//github.piorra.ir/ghp/sh-sh-dev/ip',{},function(data){
         setLanguageByIP();
-//        console.log(data);
     });
     function setLanguageByIP() {
         if (IP.responseJSON.Country == "IR") {
@@ -91,9 +90,12 @@
                 var CHL = confirm("کشور شما ایران شناسایی شد ، آیا مایل هستید زبان را به فارسی تغییر دهید؟");
                 if (CHL) {
                     setCookie("language","fa",365);
-                    setCookie("chlbyip","false",365);
+                    setCookie("chlbyip","false",7);
                     l = "fa";
                     location.reload();
+                }
+                else {
+                    setCookie("chlbyip","false",365);
                 }
             }
         }
@@ -123,7 +125,7 @@
         $("*").css("font-family","'Roboto Mono'");
         $("#chl").css("font-family","IRANSans");
         $("body").attr("dir","ltr");
-        $(document).attr("title",English.title + " About Me");
+        $(document).attr("title",English.title + " | "  + " About Me");
         $("#name").html(English.name);
         $("#jsne").html(English.jsne);
         $("#contact").html(English.contact);
@@ -139,7 +141,7 @@
         $("*").css("direction","rtl");
         $("#chl").css("font-family","'Roboto Mono'");
         $("body").attr("dir","rtl");
-        $(document).attr("title",Persian.title + " درباره من");
+        $(document).attr("title",Persian.title + " | "  + " درباره من");
         $("#name").html(Persian.name);
         $("#jsne").html(Persian.jsne);
         $("#contact").html(Persian.contact);

@@ -57,7 +57,7 @@
             <span id="home">خانه</span>
         </a>
         <h3 id="contact">تماس با من</h3>
-        <form action="https://piorra.ir/sh_sh_dev/github/message.php" method="post">
+        <form action="https://github.piorra.ir/ghp/sh-sh-dev/" method="post">
             <input type="text" id="IName" placeholder="Name" name="name" required>
             <br>
             <input type="text" id="ISubject" placeholder="Subject" name="subject" required>
@@ -89,9 +89,8 @@
         l = "en";
         setCookie("language",l,365);
     }
-    var IP = $.getJSON('//piorra.ir/sh_sh_dev/github/ip.php',{},function(data){
+    var IP = $.getJSON('//github.piorra.ir/ghp/sh-sh-dev/ip',{},function(data){
         setLanguageByIP();
-//        console.log(data);
     });
     function setLanguageByIP() {
         if (IP.responseJSON.Country == "IR") {
@@ -99,7 +98,7 @@
                 var CHL = confirm("کشور شما ایران شناسایی شد ، آیا مایل هستید زبان را به فارسی تغییر دهید؟");
                 if (CHL) {
                     setCookie("language","fa",365);
-                    setCookie("chlbyip","false",365);
+                    setCookie("chlbyip","false",7);
                     l = "fa";
                     location.reload();
                 }
@@ -144,7 +143,7 @@
         $("*").css("font-family","'Roboto Mono'");
         $("#chl").css("font-family","IRANSans");
         $("body").attr("dir","ltr");
-        $(document).attr("title",English.title + " Contact Me");
+        $(document).attr("title",English.title + " | "  + " Contact Me");
         $("#name").html(English.name);
         $("#jsne").html(English.jsne);
         $("#contact").html(English.contact);
@@ -165,7 +164,7 @@
         $("*").css("direction","rtl");
         $("#chl").css("font-family","'Roboto Mono'");
         $("body").attr("dir","rtl");
-        $(document).attr("title",Persian.title + " تماس با من");
+        $(document).attr("title",Persian.title + " | "  + " تماس با من");
         $("#name").html(Persian.name);
         $("#jsne").html(Persian.jsne);
         $("#contact").html(Persian.contact);
@@ -182,12 +181,12 @@
         var SW = "ارسال پیام مقدور نبود.";
     }
     $("#language").val(l);
-    if (getLang("error")) {
-        if (getLang("error") == "") {
+    if (getLang("message")) {
+        if (getLang("message") == "") {
             if (l == "fa") alert(Persian.NullError);
             else alert(English.NullError);
         }
-        else alert(getLang("error"))
+        else alert(getLang("message"))
     }
 </script>
 </body>
