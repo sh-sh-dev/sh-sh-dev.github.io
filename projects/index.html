@@ -74,7 +74,6 @@
     <a id="chl" href="?l=fa">فارسی</a>
 </footer>
 <script src="../script.js"></script>
-<script src="//cdn.rawgit.com/piorra/PUI/master/src/js/pui.min.js"></script>
 <script type="text/javascript">
     var l = null;
     if (getLang("l") && getLang("l") == "fa" || getLang("l") == "en") {
@@ -165,7 +164,7 @@
                     $div = $("<div>", {id: "project-" + i, "class": "chip cf projectd"});
             if (i % 2 == 0) $("#projects_d-even").append($div);
             else $("#projects_d-odd").append($div);
-            $("#project-" + i).html("<div class='body'><a target='_blank' href='https://github.com/" + Repo.full_name + "'><b>" + Repo.name + "</b></a><br><span class='muted-txt' data-popover='"+Repo.description+"'>" +  Repo.description + "</span>");
+            $("#project-" + i).html("<div class='body'><a target='_blank' href='https://github.com/" + Repo.full_name + "'><b>" + Repo.name + "</b></a><br><i class='muted-txt' title='"+Repo.description+"'>" +  Repo.description + "</i>");
             if (Repo.language != null) {
                 $("#project-" + i).append("<div class='language' data-lang='" + Repo.language + "'></div>");
             }
@@ -173,10 +172,10 @@
                 $("#project-" + i).append("&nbsp;");
             }
             if (Repo.stargazers_count != 0) {
-                $("#project-" + i).append("<span class='stars'>&#9733;" + Repo.stargazers_count + "</span>");
+                $("#project-" + i).append("<a title='Click to see Stargazers' href='https://github.com/"+ Repo.full_name +"/stargazers' class='stars'>&#9733;" + Repo.stargazers_count + "</a>");
             }
             else {
-                $("#project-" + i).append("<br><br>");
+                $("#project-" + i).append("&nbsp;");
             }
             $("#project-" + i).append("</div>");
         }

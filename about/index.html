@@ -57,9 +57,8 @@
             <span id="home">خانه</span>
         </a>
         <h3 id="about">درباره من</h3>
-        <div class="chip" id="aboutText">
-
-        </div>
+        <img id="pic">
+        <div class="chip" id="aboutText"></div>
     </section>
 </div>
 <footer class="row">
@@ -159,6 +158,16 @@
             else alert(English.NullError);
         }
         else alert(getLang("error"))
+    }
+    var User;
+    var Projects = $.getJSON('//api.github.com/users/sh-sh-dev',{},function(data){
+        console.log(data);
+        User = data;
+        GetProjects();
+    });
+    function GetProjects() {
+        $("#pic").attr("src",User.avatar_url);
+        $("#aboutText").html(User.bio);
     }
 </script>
 </body>

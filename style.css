@@ -1374,6 +1374,7 @@ a {
 
 .stars {
     float: right;
+    color: rgb(68,68,68);
 }
 
 .language {
@@ -1430,13 +1431,14 @@ a {
     font-family: 'Material Icons' !important;
 }
 
-.projectd span{
+.projectd i{
     display: block;
     max-width: 100%;
     width: 100%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-style: normal;
 }
 
 .en:not(.material-icons) {

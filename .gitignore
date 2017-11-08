@@ -6,9 +6,3 @@ ehthumbs.db
 Desktop.ini
 $RECYCLE.BIN/
 .idea/
-
-# PHP Files
-
-ip.php
-message.php
-about/
