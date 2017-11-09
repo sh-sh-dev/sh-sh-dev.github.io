@@ -45,11 +45,14 @@
     <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 <body dir="rtl">
-<!--<header>-->
-    <!--<div class="row text-center">-->
-        <!--<a class="avatar"></a>-->
-    <!--</div>-->
-<!--</header>-->
+<header>
+    <div class="row text-center">
+        <span class="avatar hidden" id="avatar"></span>
+        <div id="loader" class="avatar_pic">
+            <img src="loader.svg">
+        </div>
+    </div>
+</header>
 <div class="row text-center">
     <section>
         <noscript>
@@ -62,6 +65,11 @@
         <!--</div>-->
         <h1 id="name">شایگان شکرالهی</h1>
         <h4 class="aboutPage" id="aboutSentence">سلام ، من یک برنامه نویس سمت سرور هستم.</h4>
+        <p class="hidden">
+            <bdi><span id="business"><i class="material-icons vas">business</i></span></bdi>
+            <br>
+            <bdi><span id="location"><i class="material-icons vas">location_on</i></span></bdi>
+        </p>
         <!--<a class="tile" href="about/"><span id="about">درباره</span></a>-->
         <a class="tile" href="contact/"><span id="contact">ارتباط</span></a>
         <a class="tile" href="projects/"><span id="projects">پروژه ها</span></a>
@@ -78,7 +86,7 @@
         </a>
     </section>
 </div>
-<footer class="row">
+<footer>
     <span id="cr" style="text-align:center!important">&copy; </span>
     <div style="height: 15px;"></div>
     <a id="chl" href="?l=fa">فارسی</a>
@@ -115,6 +123,18 @@
                 }
             }
         }
+    }
+    var User = $.getJSON('//api.github.com/users/sh-sh-dev',{},function(data){
+        User = data;
+        setUser();
+        console.log(data);
+        $(".hidden").toggleClass("hidden");
+        $("#loader").addClass("hidden")
+    });
+    function setUser() {
+        $("#avatar").append("<img class='avatar_pic' src='"+ User.avatar_url +"'>");
+        $("#location").append(User.location);
+        $("#business").append(User.company.replace("@",""));
     }
     var
             Persian = {

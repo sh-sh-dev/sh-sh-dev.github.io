@@ -68,7 +68,7 @@
         </div>
     </section>
 </div>
-<footer class="row">
+<footer>
     <span id="cr" style="text-align:center!important">&copy; </span>
     <div style="height: 15px;"></div>
     <a id="chl" href="?l=fa">فارسی</a>
@@ -154,6 +154,7 @@
     $("#aboutSentence").html(ThisLanguage.aboutSentence);
 
     var Projects = $.getJSON('//api.github.com/users/sh-sh-dev/repos',{},function(data){
+//    var Projects = $.getJSON('../SERVER_projects.php',{},function(data){
         GetProjects();
         $("#loader").addClass("hidden");
         $("#projects_d").removeClass("hidden");
@@ -181,5 +182,6 @@
         }
     }
 </script>
+<script src="//cdn.rawgit.com/piorra/PUI/master/src/js/pui.min.js"></script>
 </body>
 </html>
