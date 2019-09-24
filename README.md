@@ -1,3 +1,3 @@
-My Personal Github Page
+My personal Github page
 
-[Click To Open !](https://sh-sh-dev.github.io)
+[Click to open!](https://sh-sh-dev.github.io)
