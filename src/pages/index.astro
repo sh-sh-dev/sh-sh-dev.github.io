@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import AboutSection from '../components/AboutSection.astro';
+import ExperienceList from '../components/ExperienceList.astro';
+import CapabilitiesSection from '../components/CapabilitiesSection.astro';
+// import NotesSection from '../components/NotesSection.astro';
+import CTASection from '../components/CTASection.astro';
+
+
+const notes = (await getCollection('notes')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<Layout>
+  <Hero />
+  <AboutSection />
+  <ExperienceList />
+  <CapabilitiesSection />
+  <!--<NotesSection-->
+  <!--  notes={notes.map((note) => ({-->
+  <!--    title: note.data.title,-->
+  <!--    slug: note.id,-->
+  <!--    status: note.data.status,-->
+  <!--  }))}-->
+  <!--/>-->
+  <!--<CTASection />-->
+</Layout>

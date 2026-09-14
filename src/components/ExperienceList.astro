@@ -1,0 +1,122 @@
+---
+import { getCollection } from 'astro:content';
+import { site, withBase } from '../data/site';
+
+interface Props {
+  /** Use h1 when rendering on /experience */
+  standalone?: boolean;
+}
+
+const { standalone = false } = Astro.props;
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+
+const intro =
+  'A selection of products, systems, and technical challenges I’ve worked on over the years.';
+---
+
+<section id="experience" class="pb-6 md:pb-10" aria-labelledby="experience-heading">
+  <div class="site-container py-16 md:py-24">
+    <div class="mb-12 grid gap-6 md:mb-16 md:grid-cols-[1.1fr_0.9fr] md:items-end" data-animate="section">
+      <div>
+        <p class="label-meta mb-4">Experience</p>
+        {
+          standalone ? (
+            <h1 id="experience-heading" class="display-section">
+              Explore my journey
+            </h1>
+          ) : (
+            <h2 id="experience-heading" class="display-section">
+              Explore my journey
+            </h2>
+          )
+        }
+      </div>
+      <p class="body-lg">{intro}</p>
+    </div>
+
+    <div class="overflow-hidden rounded-[1.5rem] border border-border bg-white">
+      {
+        projects.map((project) => {
+          const href = project.data.url;
+          const Tag = href ? 'a' : 'div';
+
+          return (
+            <Tag
+              href={href}
+              target={href ? '_blank' : undefined}
+              rel={href ? 'noopener noreferrer' : undefined}
+              class:list={[
+                'group flex flex-col gap-5 border-b border-border px-5 py-6 last:border-b-0 md:flex-row md:items-start md:justify-between md:gap-8 md:px-8 md:py-8',
+                href ? 'transition-colors hover:bg-bg/70' : '',
+              ]}
+              data-animate="section"
+            >
+              <div class="min-w-0 flex-1">
+                <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <h3 class="text-lg font-semibold tracking-tight md:text-xl">{project.data.title}</h3>
+                  <span class="text-sm text-muted">{project.data.location}</span>
+                </div>
+                <p class="mt-1 text-sm text-muted">
+                  {project.data.role} · {project.data.dates}
+                </p>
+                <p class="mt-4 max-w-2xl text-sm leading-relaxed text-muted md:text-base">
+                  {project.data.description}
+                </p>
+              </div>
+
+              <div class="flex flex-wrap items-center gap-2 md:max-w-xs md:justify-end">
+                {project.data.tags.slice(0, 4).map((tag, tagIndex) => (
+                  <span class:list={['pill', tagIndex === 0 ? 'pill-dark' : '']}>{tag}</span>
+                ))}
+                {
+                  href && (
+                    <span class="icon-circle ml-1" aria-hidden="true">
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                        <path
+                          d="M4 3h5v5M9 3L3 9"
+                          stroke="currentColor"
+                          stroke-width="1.2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </span>
+                  )
+                }
+                {href && <span class="sr-only">Opens in a new tab</span>}
+              </div>
+            </Tag>
+          );
+        })
+      }
+    </div>
+
+    <div class="mt-16 md:mt-20">
+      <h3 class="label-meta mb-8" data-animate="section">Themes</h3>
+      <ul class="divide-y divide-border overflow-hidden rounded-[1.5rem] border border-border bg-white">
+        {
+          site.experience.map((item) => (
+            <li
+              class="grid gap-3 px-5 py-7 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.4fr)] md:gap-12 md:px-8"
+              data-animate="section"
+            >
+              <h4 class="text-xl font-semibold tracking-tight md:text-2xl">{item.title}</h4>
+              <p class="text-sm leading-relaxed text-muted md:text-base">{item.description}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    {
+      !standalone && (
+        <div class="mt-10" data-animate="section">
+          <a href={withBase('/experience')} class="btn btn-outline">
+            View full experience
+          </a>
+        </div>
+      )
+    }
+  </div>
+</section>

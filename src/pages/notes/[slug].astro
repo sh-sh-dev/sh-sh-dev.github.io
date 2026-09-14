@@ -1,0 +1,45 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import { withBase } from '../../data/site';
+
+export async function getStaticPaths() {
+  const notes = await getCollection('notes');
+  return notes.map((note) => ({
+    params: { slug: note.id },
+    props: { note },
+  }));
+}
+
+const { note } = Astro.props;
+const { Content } = await render(note);
+---
+
+<Layout title={note.data.title} description={note.data.description}>
+  <article class="border-b border-border">
+    <div class="site-container max-w-3xl py-16 md:py-24">
+      <a
+        href={withBase('/notes')}
+        class="label-meta mb-8 inline-flex transition-colors hover:text-ink"
+        data-animate="section"
+      >
+        ← All notes
+      </a>
+      <p class="label-meta mb-4" data-animate="section">Draft topic</p>
+      <h1 class="display-section" data-animate="section">{note.data.title}</h1>
+      <p class="body-lg mt-6" data-animate="section">{note.data.description}</p>
+
+      <div
+        class="mt-10 border border-border bg-white p-4 text-sm text-muted"
+        data-animate="section"
+        role="note"
+      >
+        This page is a placeholder for a draft topic. It is not a published article.
+      </div>
+
+      <div class="prose-note mt-12 space-y-6 text-muted md:text-lg md:leading-relaxed" data-animate="section">
+        <Content />
+      </div>
+    </div>
+  </article>
+</Layout>

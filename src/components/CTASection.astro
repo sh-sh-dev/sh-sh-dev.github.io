@@ -1,0 +1,27 @@
+---
+import { withBase } from '../data/site';
+---
+
+<section id="cta" aria-labelledby="cta-heading">
+  <div class="site-container py-10 md:py-14" data-animate="section">
+    <div class="relative overflow-hidden rounded-[1.75rem] bg-dark px-8 py-16 text-white md:px-14 md:py-20">
+      <div class="pointer-events-none absolute inset-0 opacity-40" aria-hidden="true">
+        <svg class="h-full w-full" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice">
+          <rect width="1200" height="500" fill="#151515" />
+          <circle cx="980" cy="120" r="180" fill="#2a2a2a" />
+          <circle cx="200" cy="420" r="220" fill="#1f1f1f" />
+          <path d="M0 360 C300 280 500 420 800 300 C1000 220 1100 340 1200 280 L1200 500 L0 500 Z" fill="#1a1a1a" />
+        </svg>
+      </div>
+      <div class="relative mx-auto max-w-3xl text-center">
+        <h2 id="cta-heading" class="display-section text-white">
+          Have a difficult problem worth solving?
+        </h2>
+        <p class="mt-5 text-lg text-white/70 md:text-xl">
+          Let’s build something useful.
+        </p>
+        <a href={withBase('/contact')} class="btn btn-light mt-10">Get in touch</a>
+      </div>
+    </div>
+  </div>
+</section>

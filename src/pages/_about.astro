@@ -1,0 +1,118 @@
+---
+// Temporarily unpublished. Restore by renaming this file to about.astro
+// and uncommenting the About nav item plus the "More about me" button.
+import Layout from '../layouts/Layout.astro';
+import CapabilityCard from '../components/CapabilityCard.astro';
+import CTASection from '../components/CTASection.astro';
+import { site } from '../data/site';
+---
+
+<Layout title="About" description="About Shaygan Shokrollahi — software engineer, technical leader, and product builder coding since age 12.">
+  <section class="border-b border-border">
+    <div class="site-container py-16 md:py-24">
+      <p class="label-meta mb-4" data-animate="section">About</p>
+      <h1 class="display-section max-w-4xl" data-animate="section">
+        Software engineer, technical leader, and product builder.
+      </h1>
+      <p class="body-lg mt-8 max-w-2xl" data-animate="section">
+        I’ve been coding since I was 12. That long arc—from early curiosity to shipping real products—still shapes how I approach software today.
+      </p>
+    </div>
+  </section>
+
+  <section class="border-b border-border">
+    <div class="site-container grid gap-12 py-16 md:grid-cols-[0.85fr_1.15fr] md:gap-16 md:py-24">
+      <div data-animate="section">
+        <h2 class="text-2xl font-semibold tracking-tight md:text-3xl">Biography</h2>
+      </div>
+      <div class="space-y-6 text-muted md:text-lg md:leading-relaxed" data-animate="section">
+        <p>
+          I’m Shaygan Shokrollahi, a software engineer, technical leader, and product builder focused on AI systems, backend architecture, and useful digital products.
+        </p>
+        <p>
+          I started coding at 12 and have spent years turning ideas into real products—from backend systems and complex API integrations to AI-powered features and user-facing platforms.
+        </p>
+        <p>
+          Today, I work as the Tech Lead at Adad, a legal-tech SaaS platform. Adad is the latest chapter—and an important example of what I’ve built—but it isn’t the whole story.
+        </p>
+        <p>
+          Previously I was Senior Software Engineer at Vindad, where I owned Vindad AI and contributed to the legal platform and Vinsign. I’ve also shipped AI learning features at Karazma, built Blueshell’s website and internal systems from scratch, delivered an athlete management platform for LS Fencing Club, and spent years as a freelance back-end developer.
+        </p>
+        <p>
+          Across all of that, the focus stays the same: reliable software, complicated problems, and products people actually use.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-border">
+    <div class="site-container grid gap-12 py-16 md:grid-cols-[0.85fr_1.15fr] md:gap-16 md:py-24">
+      <div data-animate="section">
+        <h2 class="text-2xl font-semibold tracking-tight md:text-3xl">Technical interests</h2>
+      </div>
+      <div class="space-y-6 text-muted md:text-lg md:leading-relaxed" data-animate="section">
+        <p>
+          I’m drawn to problems where product thinking and systems engineering meet—especially legal AI grounded in local law (as with Vindad AI), PKI and digital signature systems (Vinsign), AI learning and feedback loops (Karazma), and operational platforms like athlete management at LS Fencing Club.
+        </p>
+        <p>
+          Practical AI, secure backends, knowledge architecture, and the connection between technical decisions and business outcomes are recurring themes in my work.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-border">
+    <div class="site-container grid gap-12 py-16 md:grid-cols-[0.85fr_1.15fr] md:gap-16 md:py-24">
+      <div data-animate="section">
+        <h2 class="text-2xl font-semibold tracking-tight md:text-3xl">Product-building philosophy</h2>
+      </div>
+      <div class="space-y-6 text-muted md:text-lg md:leading-relaxed" data-animate="section">
+        <p>
+          Good software starts with a clear problem and ends with something people can rely on. I care about architecture that can evolve, AI that is grounded in useful context, and product decisions that stay connected to users and sustainable business goals.
+        </p>
+        <p>
+          I prefer shipping, learning from real usage, and iterating—over polishing abstractions that never leave the lab.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="site-container py-16 md:py-24">
+      <div class="mb-12 max-w-2xl" data-animate="section">
+        <p class="label-meta mb-4">Capabilities</p>
+        <h2 class="display-section">What I can do</h2>
+      </div>
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          site.capabilities.map((capability, index) => (
+            <CapabilityCard
+              title={capability.title}
+              description={capability.description}
+              index={index}
+              tone={capability.tone}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="site-container py-16 md:py-24">
+      <div class="mb-10" data-animate="section">
+        <p class="label-meta mb-4">Stack</p>
+        <h2 class="display-section">Selected technologies</h2>
+      </div>
+      <ul class="flex flex-wrap gap-3" data-animate="section">
+        {
+          site.technologies.map((tech) => (
+            <li class="pill">{tech}</li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <CTASection />
+</Layout>

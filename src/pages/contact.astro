@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../data/site';
+---
+
+<Layout title="Contact" description="Get in touch with Shaygan Shokrollahi about products, systems, or difficult workflows.">
+  <section class="border-b border-border">
+    <div class="site-container py-20 md:py-28">
+      <div class="max-w-2xl" data-animate="section">
+        <p class="label-meta mb-4">Contact</p>
+        <h1 class="display-section">Let’s talk</h1>
+        <p class="body-lg mt-6">
+          Have a product, system, or difficult workflow in mind?
+          I’d be happy to hear about it.
+        </p>
+
+        <div class="mt-12 space-y-6">
+          <a href={`mailto:${site.email}`} class="btn">
+            Email me
+          </a>
+          <p class="text-sm text-muted">
+            Or reach out via
+            <a href={site.social.linkedin} class="underline decoration-border underline-offset-4 hover:decoration-ink" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            or
+            <a href={site.social.github} class="underline decoration-border underline-offset-4 hover:decoration-ink" target="_blank" rel="noopener noreferrer">GitHub</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

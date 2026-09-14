@@ -1,0 +1,56 @@
+---
+import { withBase } from '../data/site';
+
+interface NoteItem {
+  title: string;
+  slug: string;
+  status?: string;
+}
+
+interface Props {
+  notes: NoteItem[];
+}
+
+const { notes } = Astro.props;
+
+const tones = ['capability-tone-sand', 'capability-tone-stone', 'capability-tone-sage', 'capability-tone-ink'];
+---
+
+<section id="notes" class="pb-6 md:pb-10" aria-labelledby="notes-heading">
+  <div class="site-container py-16 md:py-24">
+    <div class="mb-12 flex flex-col justify-between gap-6 md:mb-14 md:flex-row md:items-end" data-animate="section">
+      <div class="max-w-2xl">
+        <p class="label-meta mb-4">Notes</p>
+        <h2 id="notes-heading" class="display-section">Notes & experiments</h2>
+        <p class="body-lg mt-5">Things I’m learning, building, and thinking about.</p>
+      </div>
+      <a href={withBase('/notes')} class="btn btn-outline">
+        View all notes
+      </a>
+    </div>
+
+    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        notes.map((note, index) => (
+          <a
+            href={withBase(`/notes/${note.slug}`)}
+            class="group surface-card overflow-hidden transition hover:-translate-y-0.5"
+            data-animate="section"
+          >
+            <div class:list={['aspect-[5/4]', tones[index % tones.length]]} aria-hidden="true" />
+            <div class="p-5 md:p-6">
+              <p class="label-meta mb-3">Draft topic</p>
+              <h3 class="text-lg font-semibold tracking-tight md:text-xl">
+                {note.title}
+              </h3>
+              <p class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-muted transition group-hover:text-ink">
+                Read more
+                <span aria-hidden="true">→</span>
+              </p>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

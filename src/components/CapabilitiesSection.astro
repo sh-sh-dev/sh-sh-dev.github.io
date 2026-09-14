@@ -1,0 +1,26 @@
+---
+import { site } from '../data/site';
+import CapabilityCard from './CapabilityCard.astro';
+---
+
+<section id="capabilities" class="pb-6 md:pb-10" aria-labelledby="capabilities-heading">
+  <div class="site-container py-16 md:py-24">
+    <div class="mb-12 max-w-2xl md:mb-14" data-animate="section">
+      <p class="label-meta mb-4">Capabilities</p>
+      <h2 id="capabilities-heading" class="display-section">What I can do</h2>
+    </div>
+
+    <div class="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+      {
+        site.capabilities.map((capability, index) => (
+          <CapabilityCard
+            title={capability.title}
+            description={capability.description}
+            index={index}
+            tone={capability.tone}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>

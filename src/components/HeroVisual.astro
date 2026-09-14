@@ -1,0 +1,124 @@
+---
+import { Image } from 'astro:assets';
+import portrait from '../assets/portrait.webp';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+const dialogId = 'hero-portrait-dialog';
+---
+
+<div class:list={['hero-visual-root', className]} data-animate="image">
+  <button
+    type="button"
+    class="hero-portrait-trigger group relative block w-full overflow-hidden rounded-2xl border border-border bg-[#1a1a1a] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+    aria-haspopup="dialog"
+    aria-controls={dialogId}
+    data-portrait-open
+  >
+    <span class="sr-only">View full portrait of Shaygan Shokrollahi</span>
+    <Image
+      src={portrait}
+      alt=""
+      widths={[160, 320, 480, 720, 960]}
+      sizes="(min-width: 1024px) 36vw, (min-width: 640px) 10rem, 6rem"
+      class="aspect-square h-auto w-full object-cover object-center transition duration-500 ease-out group-hover:scale-[1.03]"
+      loading="eager"
+      fetchpriority="high"
+    />
+    <span
+      class="pointer-events-none absolute bottom-1 right-1 inline-flex h-4 w-4 items-center justify-center rounded-full border border-white/10 bg-black/20 text-white/65 sm:bottom-1.5 sm:right-1.5 sm:h-5 sm:w-5 lg:bottom-3 lg:right-3 lg:h-6 lg:w-6"
+      aria-hidden="true"
+    >
+      <svg class="h-2 w-2 sm:h-2.5 sm:w-2.5" viewBox="0 0 14 14" fill="none">
+        <path
+          d="M8.5 3H11v2.5M5.5 11H3V8.5M11 3L8 6M3 11l3-3"
+          stroke="currentColor"
+          stroke-width="1.4"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </span>
+  </button>
+
+  <dialog
+    id={dialogId}
+    class="hero-portrait-dialog m-auto w-[min(92vw,36rem)] max-w-none overflow-hidden rounded-2xl border border-border bg-bg p-0 text-ink shadow-2xl"
+    aria-labelledby="hero-portrait-title"
+  >
+    <div class="flex items-center justify-between gap-3 border-b border-border px-4 py-3">
+      <p id="hero-portrait-title" class="text-sm font-medium">Portrait</p>
+      <button
+        type="button"
+        class="inline-flex h-10 min-h-10 w-10 min-w-10 items-center justify-center rounded-full border border-border bg-white transition hover:border-ink"
+        data-portrait-close
+        aria-label="Close portrait"
+      >
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
+        </svg>
+      </button>
+    </div>
+    <Image
+      src={portrait}
+      alt="Portrait of Shaygan Shokrollahi"
+      widths={[480, 720, 960, 1200]}
+      sizes="(max-width: 640px) 92vw, 36rem"
+      class="mx-auto h-auto w-full object-cover"
+      loading="lazy"
+    />
+  </dialog>
+</div>
+
+<script>
+  function initPortraitDialogs() {
+    document.querySelectorAll<HTMLElement>('.hero-visual-root').forEach((wrap) => {
+      if (wrap.dataset.portraitReady === 'true') return;
+      wrap.dataset.portraitReady = 'true';
+
+      const dialog = wrap.querySelector<HTMLDialogElement>('dialog');
+      const openBtn = wrap.querySelector<HTMLButtonElement>('[data-portrait-open]');
+      const closeBtn = wrap.querySelector<HTMLButtonElement>('[data-portrait-close]');
+      if (!dialog || !openBtn || !closeBtn) return;
+
+      openBtn.addEventListener('click', () => {
+        dialog.showModal();
+      });
+
+      closeBtn.addEventListener('click', () => {
+        dialog.close();
+      });
+
+      dialog.addEventListener('click', (event) => {
+        if (event.target === dialog) dialog.close();
+      });
+    });
+  }
+
+  initPortraitDialogs();
+  document.addEventListener('astro:page-load', initPortraitDialogs);
+</script>
+
+<style>
+  .hero-portrait-dialog {
+    max-height: min(92vh, 48rem);
+    overflow: auto;
+  }
+
+  .hero-portrait-dialog::backdrop {
+    background: rgb(0 0 0 / 0.62);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-portrait-trigger :global(img) {
+      transition: none !important;
+    }
+
+    .hero-portrait-trigger:hover :global(img) {
+      transform: none !important;
+    }
+  }
+</style>

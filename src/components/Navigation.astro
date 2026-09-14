@@ -1,0 +1,121 @@
+---
+import { site, withBase } from '../data/site';
+---
+
+<header class="site-header sticky top-0 z-50 border-b border-border/80 bg-white/95 backdrop-blur-md">
+  <div class="site-container flex h-[4.25rem] items-center justify-between gap-4 md:h-[5rem]">
+    <a
+      href={withBase('/')}
+      class="shrink-0 text-sm font-semibold tracking-tight md:text-base"
+    >
+      {site.name}
+    </a>
+
+    <nav
+      class="hidden items-center gap-1 rounded-full border border-border bg-white/80 px-2 py-1.5 lg:flex"
+      aria-label="Primary"
+    >
+      {
+        site.nav.map((item) => (
+          <a
+            href={withBase(item.href)}
+            class="rounded-full px-4 py-2 text-sm text-muted transition-colors hover:bg-bg hover:text-ink"
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a
+        href={withBase(site.cta.href)}
+        class="btn hidden !min-h-10 !px-5 !py-2 text-sm sm:inline-flex"
+      >
+        {site.cta.label}
+      </a>
+
+      <button
+        type="button"
+        class="menu-toggle inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-white lg:hidden"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        aria-label="Open menu"
+      >
+        <span class="menu-toggle-icon relative block h-3.5 w-5" aria-hidden="true">
+          <span class="absolute left-0 top-0 h-px w-full bg-ink transition"></span>
+          <span class="absolute left-0 top-1/2 h-px w-full -translate-y-1/2 bg-ink transition"></span>
+          <span class="absolute bottom-0 left-0 h-px w-full bg-ink transition"></span>
+        </span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Sibling of header so backdrop-blur does not trap fixed positioning -->
+<div
+  id="mobile-nav"
+  class="mobile-nav fixed inset-x-0 bottom-0 top-[4.25rem] z-[60] hidden overflow-y-auto border-t border-border lg:hidden"
+  hidden
+>
+  <nav class="site-container flex min-h-full flex-col gap-1 py-8" aria-label="Mobile">
+    {
+      site.nav.map((item) => (
+        <a
+          href={withBase(item.href)}
+          class="mobile-nav-link border-b border-border py-4 text-2xl font-semibold tracking-tight"
+        >
+          {item.label}
+        </a>
+      ))
+    }
+    <a href={withBase(site.cta.href)} class="btn mobile-nav-link mt-8 w-full">
+      {site.cta.label}
+    </a>
+  </nav>
+</div>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  const panel = document.querySelector<HTMLElement>('#mobile-nav');
+  const links = document.querySelectorAll<HTMLAnchorElement>('.mobile-nav-link');
+
+  if (toggle && panel) {
+    const setOpen = (open: boolean) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      panel.hidden = !open;
+      panel.classList.toggle('hidden', !open);
+      document.body.style.overflow = open ? 'hidden' : '';
+      toggle.classList.toggle('is-open', open);
+    };
+
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') !== 'true';
+      setOpen(open);
+    });
+
+    links.forEach((link) => link.addEventListener('click', () => setOpen(false)));
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') setOpen(false);
+    });
+  }
+</script>
+
+<style>
+  #mobile-nav {
+    background-color: #ffffff;
+  }
+
+  .menu-toggle.is-open .menu-toggle-icon span:nth-child(1) {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+  }
+  .menu-toggle.is-open .menu-toggle-icon span:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-toggle.is-open .menu-toggle-icon span:nth-child(3) {
+    bottom: 50%;
+    transform: translateY(50%) rotate(-45deg);
+  }
+</style>
